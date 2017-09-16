@@ -8,7 +8,7 @@ namespace Journly
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-            filters.Add(new AuthorizeAttribute());
+            filters.Add(new AuthorizeAttribute()); //restrict access to the web app to logged in users. redirects anon users to login page.
         }
     }
 }

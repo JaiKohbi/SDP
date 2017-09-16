@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Journly.Models;
 
 namespace Journly.Controllers
@@ -18,6 +19,13 @@ namespace Journly.Controllers
 
         public ActionResult New()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(String title)
+        {
+            //Journal jrn = new Journal {Title = title, CreationDate = DateTime.Now, UserId = Membership.GetUser().UserName}; //cannot pull userId from current user.
             return View();
         }
     }

@@ -199,6 +199,10 @@
     <Compile Include="Migrations\201709160337565_InitialModel.Designer.cs">
       <DependentUpon>201709160337565_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709160628469_JournalValidation.cs" />
+    <Compile Include="Migrations\201709160628469_JournalValidation.Designer.cs">
+      <DependentUpon>201709160628469_JournalValidation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -266,6 +270,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Journal\ViewJournals.cshtml" />
+    <Content Include="Views\Journal\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -288,6 +293,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201709160337565_InitialModel.resx">
       <DependentUpon>201709160337565_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709160628469_JournalValidation.resx">
+      <DependentUpon>201709160628469_JournalValidation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
