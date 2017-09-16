@@ -8,6 +8,7 @@ namespace Journly.Controllers
 {
     public class HomeController : Controller
     {
+        [AllowAnonymous] //allows anon users to access this page
         public ActionResult Index()
         {
             return View();
