@@ -20,6 +20,8 @@ namespace Journly.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Journal> Journals { get; set; }
+        public DbSet<JournalEntry> JournalEntries { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

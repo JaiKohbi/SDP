@@ -94,3 +94,5 @@ C:\Users\Jai\Documents\Uni\Year_Three_Sem_Two\SDP\SDP_Project\Journly\Journly\bi
 C:\Users\Jai\Documents\Uni\Year_Three_Sem_Two\SDP\SDP_Project\Journly\Journly\obj\Debug\Journly.csprojResolveAssemblyReference.cache
 C:\Users\Jai\Documents\Uni\Year_Three_Sem_Two\SDP\SDP_Project\Journly\Journly\obj\Debug\Journly.dll
 C:\Users\Jai\Documents\Uni\Year_Three_Sem_Two\SDP\SDP_Project\Journly\Journly\obj\Debug\Journly.pdb
+C:\Users\Jai\Documents\Uni\Year_Three_Sem_Two\SDP\SDP_Project\Journly\Journly\obj\Debug\Journly.Migrations.InitialModel.resources
+C:\Users\Jai\Documents\Uni\Year_Three_Sem_Two\SDP\SDP_Project\Journly\Journly\obj\Debug\Journly.csproj.GenerateResource.Cache
