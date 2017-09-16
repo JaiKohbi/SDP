@@ -15,5 +15,10 @@ namespace Journly.Controllers
             var Journal = new Journal() {Title = "My First Journal"};
             return View(Journal);
         }
+
+        public ActionResult New()
+        {
+            return View();
+        }
     }
 }
