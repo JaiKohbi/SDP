@@ -10,11 +10,14 @@ namespace Journly.Models
     public class Journal
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
+
+        [Required]
+        public string UserName { get; set; }
 
         [Required]
         [StringLength(50)]
         public String Title { get; set; }
+
         public DateTime CreationDate { get; set; }
     }
 }
