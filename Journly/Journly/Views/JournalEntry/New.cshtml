@@ -1,0 +1,21 @@
+﻿@model Journly.Models.JournalEntry
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Journal Entry</h2>
+
+@using (Html.BeginForm("Create", "JournalEntry"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Title)
+        @Html.TextBoxFor(m => m.Title, new {@class = "form-control"})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.EntryBody)
+        @Html.TextAreaFor(m => m.EntryBody, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Journly.Models;
+using Journly.Models.ViewModels;
 using Microsoft.AspNet.Identity;
 
 namespace Journly.Controllers
@@ -55,6 +56,22 @@ namespace Journly.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("ViewJournals", "Journal");
+        }
+
+        public ActionResult Details(int id)
+        {
+            var entries = _context.JournalEntries.ToList();
+            var data = new JournalDetails();
+
+            foreach (JournalEntry jrnEntry in entries)
+            {
+                if (jrnEntry.JournalId == id)
+                {
+                    data.entries.Add(jrnEntry);
+                }
+            }
+
+            return View(data);
         }
     }
 }

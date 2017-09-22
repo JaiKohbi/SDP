@@ -1,0 +1,31 @@
+﻿@model Journly.Models.ViewModels.JournalDetails
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.journal.Title</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Creation Date</th>
+        <th>Version</th>
+        <th>Entry</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var entry in Model.entries)
+        {
+            <tr>
+                <td>@entry.Title</td>
+                <td>@entry.CreatedOn</td>
+                <td>@entry.Version</td>
+                <td>@entry.EntryBody</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p class="btn-primary">@Html.ActionLink("New Entry", "New", "JournalEntry")</p>

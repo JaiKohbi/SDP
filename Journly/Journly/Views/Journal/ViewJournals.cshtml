@@ -27,7 +27,7 @@ else
             {
                 <tr>
                     <td>
-                        @jrn.Title
+                        @Html.ActionLink(jrn.Title, "Details", "Journal", new {id = jrn.Id})
                     </td>
                     <td>
                         @jrn.CreationDate.ToString()
