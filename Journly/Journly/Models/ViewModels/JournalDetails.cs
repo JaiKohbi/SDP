@@ -7,6 +7,11 @@ namespace Journly.Models.ViewModels
 {
     public class JournalDetails
     {
+        public JournalDetails()
+        {
+            journal = new Journal();
+            entries = new List<JournalEntry>();
+        }
         public Journal journal;
         public List<JournalEntry> entries;
     }

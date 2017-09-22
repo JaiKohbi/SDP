@@ -58,10 +58,11 @@ namespace Journly.Controllers
             return RedirectToAction("ViewJournals", "Journal");
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
             var entries = _context.JournalEntries.ToList();
             var data = new JournalDetails();
+            data.journal = _context.Journals.SingleOrDefault(j => j.Id == id);
 
             foreach (JournalEntry jrnEntry in entries)
             {
