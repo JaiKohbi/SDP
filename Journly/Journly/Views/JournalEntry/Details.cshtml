@@ -1,4 +1,6 @@
-﻿@model Journly.Models.JournalEntry
+﻿@using Journly.Models
+@using Microsoft.Ajax.Utilities
+@model Journly.Models.JournalEntry
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,8 +18,21 @@
         <td>@Model.Version</td>
     </tr>
     <tr>
+        <td>Flag</td>
+        <td>@Model.Flag</td>
+    </tr>
+    <tr>
         <td>Entry Body</td>
         <td>@Model.EntryBody</td>
     </tr>
-
 </table>
+
+@if (Model.Flag == JournalEntry.EntryFlag.H)
+{
+    <p class="btn btn-warning">@Html.ActionLink("Un-Hide Entry", "FlagNormal", "JournalEntry", new { id = Model.Id }, null)</p>
+    <p class ="btn btn-danger">@Html.ActionLink("Delete Entry", "FlagDeleted", "JournalEntry", new {id = Model.Id}, null)</p>
+}else if (Model.Flag == JournalEntry.EntryFlag.N)
+{
+    <p class="btn btn-warning">@Html.ActionLink("Hide Entry", "FlagHidden", "JournalEntry", new {id = Model.Id}, null)</p>
+    <p class="btn btn-danger">@Html.ActionLink("Delete Entry", "FlagDeleted", "JournalEntry", new {id = Model.Id}, null)</p>
+}

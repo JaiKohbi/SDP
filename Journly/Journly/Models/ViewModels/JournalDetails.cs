@@ -9,10 +9,12 @@ namespace Journly.Models.ViewModels
     {
         public JournalDetails()
         {
-            journal = new Journal();
-            entries = new List<JournalEntry>();
+            Journal = new Journal();
+            Entries = new List<JournalEntry>();
         }
-        public Journal journal;
-        public List<JournalEntry> entries;
+        public Journal Journal;
+        public List<JournalEntry> Entries;
+        public bool ShowHidden { get; set; }
+        public bool ShowDeleted { get; set; }
     }
 }

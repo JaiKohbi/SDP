@@ -57,5 +57,59 @@ namespace Journly.Controllers
 
             return View(entry);
         }
+
+        public ActionResult FlagHidden(int id)
+        {
+            var entryInDb = _context.JournalEntries.Single(e => e.Id == id);
+
+            if (entryInDb != null)
+            {
+                entryInDb.Flag = JournalEntry.EntryFlag.H;
+
+                _context.SaveChanges();
+
+                return RedirectToAction("Details", "Journal", new { Id = entryInDb.JournalId });
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+        public ActionResult FlagDeleted(int id)
+        {
+            var entryInDb = _context.JournalEntries.Single(e => e.Id == id);
+
+            if (entryInDb != null)
+            {
+                entryInDb.Flag = JournalEntry.EntryFlag.D;
+
+                _context.SaveChanges();
+
+                return RedirectToAction("Details", "Journal", new { Id = entryInDb.JournalId });
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+        public ActionResult FlagNormal(int id)
+        {
+            var entryInDb = _context.JournalEntries.Single(e => e.Id == id);
+
+            if (entryInDb != null && entryInDb.Flag == JournalEntry.EntryFlag.H)
+            {
+                entryInDb.Flag = JournalEntry.EntryFlag.N;
+
+                _context.SaveChanges();
+
+                return RedirectToAction("Details", "Journal", new { Id = entryInDb.JournalId });
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
     }
 }

@@ -58,22 +58,32 @@ namespace Journly.Controllers
             return RedirectToAction("ViewJournals", "Journal");
         }
 
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id, bool? showHidden, bool? showDeleted)
         {
             var entries = _context.JournalEntries.ToList();
             var data = new JournalDetails();
-            data.journal = _context.Journals.SingleOrDefault(j => j.Id == id);
+            data.Journal = _context.Journals.SingleOrDefault(j => j.Id == id);
 
-            if (data.journal == null)
+            if (data.Journal == null)
             {
                 return HttpNotFound();
             }
 
             foreach (JournalEntry jrnEntry in entries)
             {
-                if (jrnEntry.JournalId == id)
+                if (jrnEntry.JournalId == id && jrnEntry.Flag == JournalEntry.EntryFlag.N)
                 {
-                    data.entries.Add(jrnEntry);
+                    data.Entries.Add(jrnEntry);
+                }
+                if (showHidden == true && jrnEntry.Flag == JournalEntry.EntryFlag.H)
+                {
+                    data.ShowHidden = true;
+                    data.Entries.Add(jrnEntry);
+                }
+                if (showDeleted == true && jrnEntry.Flag == JournalEntry.EntryFlag.D)
+                {
+                    data.ShowDeleted = true;
+                    data.Entries.Add(jrnEntry);
                 }
             }
 
