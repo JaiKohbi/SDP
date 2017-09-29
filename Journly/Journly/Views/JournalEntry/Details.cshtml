@@ -1,0 +1,23 @@
+﻿@model Journly.Models.JournalEntry
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <td>Date and Time</td>
+        <td>@Model.CreatedOn</td>
+    </tr>
+    <tr>
+        <td>Version</td>
+        <td>@Model.Version</td>
+    </tr>
+    <tr>
+        <td>Entry Body</td>
+        <td>@Model.EntryBody</td>
+    </tr>
+
+</table>

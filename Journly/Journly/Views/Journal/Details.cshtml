@@ -21,7 +21,7 @@
         @foreach (var entry in Model.entries)
         {
             <tr>
-                <td>@entry.Title</td>
+                <td>@Html.ActionLink(entry.Title, "Details", "JournalEntry", new {id = entry.Id}, null)</td>
                 <td>@entry.CreatedOn</td>
                 <td>@entry.Version</td>
                 <td>@entry.EntryBody</td>
@@ -35,4 +35,4 @@ else
     <p>No Entries Exist for this Journal</p>
 }
 
-<p class="btn btn-primary">@Html.ActionLink("New Entry", "New", "JournalEntry")</p>
+<p class="btn btn-primary">@Html.ActionLink("New Entry", "New", "JournalEntry", new {id = Model.journal.Id}, null)</p>

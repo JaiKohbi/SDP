@@ -64,6 +64,11 @@ namespace Journly.Controllers
             var data = new JournalDetails();
             data.journal = _context.Journals.SingleOrDefault(j => j.Id == id);
 
+            if (data.journal == null)
+            {
+                return HttpNotFound();
+            }
+
             foreach (JournalEntry jrnEntry in entries)
             {
                 if (jrnEntry.JournalId == id)
