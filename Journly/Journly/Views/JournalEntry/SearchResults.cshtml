@@ -1,0 +1,49 @@
+﻿@using Journly.Models
+
+@model Journly.Models.ViewModels.SearchFormModel
+
+@{
+    ViewBag.Title = "SearchResults";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SearchResults</h2>
+
+@using (Html.BeginForm("SearchResults", "JournalEntry"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.SearchString)
+        @Html.TextAreaFor(m => m.SearchString, new {@class = "form-control"})
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+}
+
+@if (!Model.Results.Any())
+{
+    <p>There are no result, please try another search</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Created on</th>
+                <th>Version</th>
+                <th>Flag</th>
+                <th>Entry Body</th>
+            </tr>
+        </thead>
+        @foreach (var jrn in Model.Results)
+        {
+            <tr>
+                <td>@Html.ActionLink(jrn.Title, "Details", "JournalEntry", new {id = jrn.Id}, null)</td>
+                <td>@jrn.CreatedOn</td>
+                <td>@jrn.Version</td>
+                <td>@jrn.Flag</td>
+                <td>@jrn.EntryBody</td>
+            </tr>
+        }
+    </table>
+}
+

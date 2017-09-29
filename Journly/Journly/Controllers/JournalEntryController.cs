@@ -111,5 +111,102 @@ namespace Journly.Controllers
                 return HttpNotFound();
             }
         }
+
+        public ActionResult SearchResults(SearchFormModel search)
+        {
+            search.Results = new List<JournalEntry>();
+
+            var myJournals = (from j in _context.Journals
+                              where j.UserName == User.Identity.Name
+                              select j).ToList();
+
+            var entries = new List<JournalEntry>();
+
+            foreach (var jrn in myJournals)
+            {
+                var myEntries = (from e in _context.JournalEntries
+                    where e.JournalId == jrn.Id
+                    select e).ToList();
+
+                foreach (var ent in myEntries)
+                {
+                    entries.Add(ent);
+                }
+            }
+
+            if (search.SearchString != null)
+            {
+                search.Results = FilterByString(entries, search.SearchString);
+            }
+            if (search.StartDate.Date != new DateTime().Date)
+            {
+                search.Results = search.EndDate.Date != new DateTime().Date ? FilterByDateRange(entries, search.StartDate, search.EndDate) : FilterByDate(entries, search.StartDate);
+            }
+            if (search.JournalId != 0)
+            {
+                search.Results = FilterByJournal(entries, search.JournalId);
+            }
+
+            return View(search);
+        }
+
+        private List<JournalEntry> FilterByJournal(List<JournalEntry> entries, int journalId)
+        {
+            var validEntries = new List<JournalEntry>();
+
+            foreach (var jrn in entries)
+            {
+                if (jrn.JournalId == journalId)
+                {
+                    validEntries.Add(jrn);
+                }
+            }
+
+            return validEntries;
+        }
+
+        private List<JournalEntry> FilterByDate(List<JournalEntry> entries, DateTime date)
+        {
+            var validEntries = new List<JournalEntry>();
+
+            foreach (var jrn in entries)
+            {
+                if (jrn.CreatedOn.Date == date.Date)
+                {
+                    validEntries.Add(jrn);
+                }
+            }
+
+            return validEntries;
+        }
+
+        private List<JournalEntry> FilterByDateRange(List<JournalEntry> entries, DateTime startDate, DateTime endDate)
+        {
+            var validEntries = new List<JournalEntry>();
+
+            foreach (var jrn in entries)
+            {
+                if (jrn.CreatedOn.Date > startDate && jrn.CreatedOn.Date < endDate.Date)
+                {
+                    validEntries.Add(jrn);
+                }
+            }
+
+            return validEntries;
+        }
+
+        private List<JournalEntry> FilterByString(List<JournalEntry> entries, String searchString)
+        {
+            var validEntries = new List<JournalEntry>();
+
+            foreach (var jrn in entries)
+            {
+                if (jrn.EntryBody.Contains(searchString) || jrn.Title.Contains(searchString))
+                {
+                    validEntries.Add(jrn);
+                }
+            }
+            return validEntries;
+        }
     }
 }
