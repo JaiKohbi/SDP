@@ -8,6 +8,8 @@
 
 <h2>@Model.Title</h2>
 
+<p class="btn btn-warning">@Html.ActionLink("Update Entry", "UpdateEntry", "JournalEntry", new { id = Model.Id }, null)</p>
+
 <table class="table table-bordered table-hover">
     <tr>
         <td>Date and Time</td>

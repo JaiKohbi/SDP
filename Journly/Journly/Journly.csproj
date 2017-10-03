@@ -284,7 +284,7 @@
     <Content Include="Views\Journal\ViewJournals.cshtml" />
     <Content Include="Views\Journal\New.cshtml" />
     <Content Include="Views\Journal\Details.cshtml" />
-    <Content Include="Views\JournalEntry\New.cshtml" />
+    <Content Include="Views\JournalEntry\EntryForm.cshtml" />
     <Content Include="Views\JournalEntry\Details.cshtml" />
     <Content Include="Views\JournalEntry\SearchResults.cshtml" />
   </ItemGroup>

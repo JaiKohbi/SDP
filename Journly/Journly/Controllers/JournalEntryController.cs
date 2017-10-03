@@ -22,12 +22,60 @@ namespace Journly.Controllers
             _context.Dispose();
         }
 
+        public ActionResult UpdateEntry(int id)
+        {
+            JournalEntry entry = _context.JournalEntries.SingleOrDefault(j => j.Id == id);
+
+            if (entry == null)
+            {
+                return HttpNotFound();
+            }
+            //  Get the Entry and pass it to the view
+            //  render it in the view
+            //  allow changes to be made
+            //  pass both back to Update
+
+            var model = new EntryFormModel()
+            {
+                entry = entry,
+                journal = _context.Journals.SingleOrDefault(j => j.Id == entry.JournalId)
+            };
+
+            return View("EntryForm", model);
+        }
+
+        [HttpPost]
+        public ActionResult Update(EntryFormModel model)
+        {
+            var oldVersion = _context.JournalEntries.Single(e => e.Id == model.entry.Id);
+            if (oldVersion == null)
+            {
+                return HttpNotFound();
+            }
+            oldVersion.Flag = JournalEntry.EntryFlag.E;
+            var newVersion = new JournalEntry()
+            {
+                CreatedOn = DateTime.Now,
+                EntryBody = model.entry.EntryBody,
+                Flag = JournalEntry.EntryFlag.N,
+                EntryEditedReason = model.entry.EntryEditedReason,
+                EntryEditedId = model.entry.Id,
+                JournalId = model.journal.Id,
+                Title = model.entry.Title,
+                Version = (model.entry.Version + 1)
+            };
+            _context.JournalEntries.Add(newVersion);
+            _context.SaveChanges();
+
+            return RedirectToAction("Details", "Journal", new {id = model.journal.Id});
+        }
+
         // GET: JournalEntry
         public ActionResult New(int? id)
         {
             EntryFormModel model = new EntryFormModel();
             model.journal = _context.Journals.SingleOrDefault(j => j.Id == id);
-            return View(model);
+            return View("EntryForm", model);
         }
 
         [HttpPost]
@@ -54,6 +102,8 @@ namespace Journly.Controllers
             {
                 return HttpNotFound();
             }
+
+            //  entry version is not 1, find other versions and pass them through too.
 
             return View(entry);
         }
