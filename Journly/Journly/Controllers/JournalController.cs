@@ -75,12 +75,12 @@ namespace Journly.Controllers
                 {
                     data.Entries.Add(jrnEntry);
                 }
-                if (showHidden == true && jrnEntry.Flag == JournalEntry.EntryFlag.H)
+                if (jrnEntry.JournalId == id && showHidden == true && jrnEntry.Flag == JournalEntry.EntryFlag.H)
                 {
                     data.ShowHidden = true;
                     data.Entries.Add(jrnEntry);
                 }
-                if (showDeleted == true && jrnEntry.Flag == JournalEntry.EntryFlag.D)
+                if (jrnEntry.JournalId == id && showDeleted == true && jrnEntry.Flag == JournalEntry.EntryFlag.D)
                 {
                     data.ShowDeleted = true;
                     data.Entries.Add(jrnEntry);

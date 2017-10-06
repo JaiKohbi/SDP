@@ -98,14 +98,33 @@ namespace Journly.Controllers
         {
             JournalEntry entry = _context.JournalEntries.SingleOrDefault(e => e.Id == id);
 
+            var entries = new List<JournalEntry>();
+
             if (entry == null)
             {
                 return HttpNotFound();
             }
 
+            entries.Add(entry);
+
+            if (entry.Version != 1)
+            {
+                var allEntries = _context.JournalEntries.ToList();
+                for (int i = entry.Version; i >= 1; i--)
+                {
+                    foreach (var e in allEntries)
+                    {
+                        if (e.Id == entry.EntryEditedId && e.Version == i)
+                        {
+                            entries.Add(e);
+                        }
+                    }
+                }
+            }
+
             //  entry version is not 1, find other versions and pass them through too.
 
-            return View(entry);
+            return View(entries);
         }
 
         public ActionResult FlagHidden(int id)
