@@ -12,6 +12,7 @@ namespace Journly.Models.ViewModels
             Results = new List<JournalEntry>();
         }
 
+        public String JournalTitle { get; set; }
         public String SearchString { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

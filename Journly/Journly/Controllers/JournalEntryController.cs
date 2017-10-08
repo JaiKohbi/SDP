@@ -181,8 +181,31 @@ namespace Journly.Controllers
             }
         }
 
-        public ActionResult SearchResults(SearchFormModel search)
+        public ActionResult SearchSelect()
         {
+            var jrnls = _context.Journals.ToList();
+            var userJournals = new List<Journal>();
+
+            foreach (Journal jrn in jrnls)
+            {
+                if (jrn.UserName.Equals(User.Identity.Name))
+                {
+                    userJournals.Add(jrn);
+                }
+            }
+
+            return View(userJournals);
+        }
+
+        public ActionResult SearchResults(SearchFormModel search, int? id)
+        {
+            if (id != null && id != 0)
+            {
+                var jrn = _context.Journals.SingleOrDefault(j => j.Id == id);
+                search.JournalId = (int)id;
+                search.JournalTitle = jrn.Title;
+            }
+
             search.Results = new List<JournalEntry>();
 
             var myJournals = (from j in _context.Journals
@@ -199,21 +222,21 @@ namespace Journly.Controllers
 
                 foreach (var ent in myEntries)
                 {
-                    entries.Add(ent);
+                    search.Results.Add(ent);
                 }
             }
 
             if (search.SearchString != null)
             {
-                search.Results = FilterByString(entries, search.SearchString);
+                search.Results = FilterByString(search.Results, search.SearchString);
             }
             if (search.StartDate.Date != new DateTime().Date)
             {
-                search.Results = search.EndDate.Date != new DateTime().Date ? FilterByDateRange(entries, search.StartDate, search.EndDate) : FilterByDate(entries, search.StartDate);
+                search.Results = search.EndDate.Date != new DateTime().Date ? FilterByDateRange(search.Results, search.StartDate, search.EndDate) : FilterByDate(search.Results, search.StartDate);
             }
             if (search.JournalId != 0)
             {
-                search.Results = FilterByJournal(entries, search.JournalId);
+                search.Results = FilterByJournal(search.Results, search.JournalId);
             }
 
             return View(search);
