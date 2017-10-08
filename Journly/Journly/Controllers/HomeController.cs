@@ -27,5 +27,12 @@ namespace Journly.Controllers
 
             return View();
         }
+
+        public ActionResult FAQs()
+        {
+            ViewBag.Message = "Getting Started";
+
+            return View();
+        }
     }
 }
