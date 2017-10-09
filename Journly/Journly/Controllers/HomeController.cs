@@ -16,7 +16,7 @@ namespace Journly.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Journly - An overview";
+            ViewBag.Message = "Journly - An Overview";
 
             return View();
         }
