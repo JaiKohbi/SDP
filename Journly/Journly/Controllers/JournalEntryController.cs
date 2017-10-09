@@ -45,6 +45,7 @@ namespace Journly.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Update(EntryFormModel model)
         {
             var oldVersion = _context.JournalEntries.Single(e => e.Id == model.entry.Id);
@@ -79,6 +80,7 @@ namespace Journly.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(EntryFormModel model)
         {
             if (model.entry.Title == null || model.entry.EntryBody == null)

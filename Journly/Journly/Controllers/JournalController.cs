@@ -47,6 +47,7 @@ namespace Journly.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Journal journal)
         {
             if (journal.Title == null)
