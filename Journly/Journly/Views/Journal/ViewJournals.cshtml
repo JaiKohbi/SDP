@@ -20,7 +20,6 @@ else
             <tr>
                 <th>Title</th>
                 <th>Date Created</th>
-                <th>Id</th>
             </tr>
         </thead>
         <tbody>
@@ -33,13 +32,12 @@ else
                     <td>
                         @jrn.CreationDate.ToString()
                     </td>
-                    <td>@jrn.Id</td>
                 </tr>
             }
         </tbody>
     </table>
 }
 
-<p class="btn">@Html.ActionLink("New Journal", "New", "Journal")</p>
+<p class="btn btn-success">@Html.ActionLink("New Journal", "New", "Journal")</p>
 
 

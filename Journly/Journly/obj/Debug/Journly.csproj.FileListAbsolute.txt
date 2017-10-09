@@ -200,3 +200,5 @@ C:\Users\Audwin\Documents\GitHub\SDP\Journly\Journly\obj\Debug\Journly.csproj.Ge
 C:\Users\Audwin\Documents\GitHub\SDP\Journly\Journly\obj\Debug\Journly.csproj.CoreCompileInputs.cache
 C:\Users\Audwin\Documents\GitHub\SDP\Journly\Journly\obj\Debug\Journly.dll
 C:\Users\Audwin\Documents\GitHub\SDP\Journly\Journly\obj\Debug\Journly.pdb
+C:\Users\Jai\Documents\Uni\Year_Three_Sem_Two\SDP\SDP_Project\Journly\Journly\obj\Debug\Journly.Migrations.ValidationOnJournalEntryClass.resources
+C:\Users\Jai\Documents\Uni\Year_Three_Sem_Two\SDP\SDP_Project\Journly\Journly\obj\Debug\Journly.Migrations.ValidationForJournals.resources

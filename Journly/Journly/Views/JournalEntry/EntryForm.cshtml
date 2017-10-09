@@ -13,10 +13,12 @@
      <div class="form-group">
          @Html.LabelFor(m => m.entry.Title)
          @Html.TextBoxFor(m => m.entry.Title, new {@class = "form-control"})
+         @Html.ValidationMessageFor(m => m.entry.Title)
      </div>
      <div class="form-group">
          @Html.LabelFor(m => m.entry.EntryBody)
          @Html.TextAreaFor(m => m.entry.EntryBody, new {@class = "form-control"})
+         @Html.ValidationMessageFor(m => m.entry.EntryBody)
      </div>
      @Html.HiddenFor(m => m.journal.Id)
      <button type="submit" class="btn btn-primary">Save</button>

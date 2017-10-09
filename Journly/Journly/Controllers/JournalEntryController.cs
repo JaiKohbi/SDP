@@ -81,6 +81,11 @@ namespace Journly.Controllers
         [HttpPost]
         public ActionResult Create(EntryFormModel model)
         {
+            if (model.entry.Title == null || model.entry.EntryBody == null)
+            {
+                return View("EntryForm", model);
+            }
+
             model.entry.JournalId = model.journal.Id;
             model.entry.CreatedOn = DateTime.Now;
             model.entry.Version = 1;

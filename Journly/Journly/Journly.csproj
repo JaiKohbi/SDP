@@ -213,6 +213,14 @@
     <Compile Include="Migrations\201709182304078_syncDatabase.Designer.cs">
       <DependentUpon>201709182304078_syncDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710090352026_ValidationOnJournalEntryClass.cs" />
+    <Compile Include="Migrations\201710090352026_ValidationOnJournalEntryClass.Designer.cs">
+      <DependentUpon>201710090352026_ValidationOnJournalEntryClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710090407499_ValidationForJournals.cs" />
+    <Compile Include="Migrations\201710090407499_ValidationForJournals.Designer.cs">
+      <DependentUpon>201710090407499_ValidationForJournals.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -321,6 +329,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709182304078_syncDatabase.resx">
       <DependentUpon>201709182304078_syncDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710090352026_ValidationOnJournalEntryClass.resx">
+      <DependentUpon>201710090352026_ValidationOnJournalEntryClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710090407499_ValidationForJournals.resx">
+      <DependentUpon>201710090407499_ValidationForJournals.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

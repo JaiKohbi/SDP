@@ -47,11 +47,17 @@ namespace Journly.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(String title)
+        public ActionResult Create(Journal journal)
         {
-            Journal jrn = new Journal { Title = title,
+            if (journal.Title == null)
+            {
+                return View("New");
+            }
+
+            Journal jrn = new Journal { Title = journal.Title,
                                         CreationDate = DateTime.Now,
                                         UserName = User.Identity.Name};
+            
             _context.Journals.Add(jrn);
             _context.SaveChanges();
 

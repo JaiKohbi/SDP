@@ -9,23 +9,23 @@
 @if (Model.ShowHidden == false && Model.ShowDeleted == false)
 {
 
-    <p class="btn">@Html.ActionLink("Show Hidden", "Details", "Journal", new {id = Model.Journal.Id, showHidden = true, showDeleted = false }, null)</p>
-    <p class="btn">@Html.ActionLink("Show Deleted", "Details", "Journal", new {id = Model.Journal.Id, showHidden = false, showDeleted = true }, null)</p>
+    <p class="btn btn-warning">@Html.ActionLink("Show Hidden", "Details", "Journal", new {id = Model.Journal.Id, showHidden = true, showDeleted = false }, null)</p>
+    <p class="btn btn-warning">@Html.ActionLink("Show Deleted", "Details", "Journal", new {id = Model.Journal.Id, showHidden = false, showDeleted = true }, null)</p>
 }
 else if(Model.ShowHidden == true && Model.ShowDeleted == false)
 {
-    <p class="btn">@Html.ActionLink("Hide Hidden", "Details", "Journal", new { id = Model.Journal.Id, showHidden = false, showDeleted = false }, null)</p>
-    <p class="btn">@Html.ActionLink("Show Deleted", "Details", "Journal", new { id = Model.Journal.Id, showHidden = true, showDeleted = true }, null)</p>
+    <p class="btn btn-warning">@Html.ActionLink("Hide Hidden", "Details", "Journal", new { id = Model.Journal.Id, showHidden = false, showDeleted = false }, null)</p>
+    <p class="btn btn-warning">@Html.ActionLink("Show Deleted", "Details", "Journal", new { id = Model.Journal.Id, showHidden = true, showDeleted = true }, null)</p>
 }
 else if (Model.ShowHidden == false && Model.ShowDeleted == true)
 {
-    <p class="btn">@Html.ActionLink("Show Hidden", "Details", "Journal", new { id = Model.Journal.Id, showHidden = true, showDeleted = true }, null)</p>
-    <p class="btn">@Html.ActionLink("Hide Deleted", "Details", "Journal", new { id = Model.Journal.Id, showHidden = false, showDeleted = false }, null)</p>
+    <p class="btn btn-warning">@Html.ActionLink("Show Hidden", "Details", "Journal", new { id = Model.Journal.Id, showHidden = true, showDeleted = true }, null)</p>
+    <p class="btn btn-warning">@Html.ActionLink("Hide Deleted", "Details", "Journal", new { id = Model.Journal.Id, showHidden = false, showDeleted = false }, null)</p>
 }
 else if (Model.ShowHidden == true && Model.ShowDeleted == true)
 {
-    <p class="btn">@Html.ActionLink("Hide Hidden", "Details", "Journal", new { id = Model.Journal.Id, showHidden = false, showDeleted = true }, null)</p>
-    <p class="btn">@Html.ActionLink("Hide Deleted", "Details", "Journal", new { id = Model.Journal.Id, showHidden = true, showDeleted = false }, null)</p>
+    <p class="btn btn-warning">@Html.ActionLink("Hide Hidden", "Details", "Journal", new { id = Model.Journal.Id, showHidden = false, showDeleted = true }, null)</p>
+    <p class="btn btn-warning">@Html.ActionLink("Hide Deleted", "Details", "Journal", new { id = Model.Journal.Id, showHidden = true, showDeleted = false }, null)</p>
 }
 
 @if (Model.Entries.Count > 0)
@@ -59,4 +59,4 @@ else
     <p>No Entries Exist for this Journal</p>
 }
 
-<p class="btn btn-primary">@Html.ActionLink("New Entry", "New", "JournalEntry", new {id = Model.Journal.Id}, null)</p>
+<p class="btn btn-success">@Html.ActionLink("New Entry", "New", "JournalEntry", new {id = Model.Journal.Id}, null)</p>
