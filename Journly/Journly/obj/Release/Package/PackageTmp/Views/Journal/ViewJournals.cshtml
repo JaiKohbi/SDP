@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Journly.Models.Journal>
+@{
+    ViewBag.Title = "ViewJournals";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>My Journals</h2>
+
+
+
+
+@if (!Model.Any())
+{
+    <p>You have no Journals</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var jrn in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(jrn.Title, "Details", "Journal", new {id = jrn.Id}, null)
+                    </td>
+                    <td>
+                        @jrn.CreationDate.ToString()
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<p class="btn btn-success">@Html.ActionLink("New Journal", "New", "Journal")</p>
+
+

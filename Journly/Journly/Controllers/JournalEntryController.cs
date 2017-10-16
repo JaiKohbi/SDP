@@ -249,7 +249,7 @@ namespace Journly.Controllers
             return View(search);
         }
 
-        private List<JournalEntry> FilterByJournal(List<JournalEntry> entries, int journalId)
+        public List<JournalEntry> FilterByJournal(List<JournalEntry> entries, int journalId)
         {
             var validEntries = new List<JournalEntry>();
 
@@ -264,7 +264,7 @@ namespace Journly.Controllers
             return validEntries;
         }
 
-        private List<JournalEntry> FilterByDate(List<JournalEntry> entries, DateTime date)
+        public List<JournalEntry> FilterByDate(List<JournalEntry> entries, DateTime date)
         {
             var validEntries = new List<JournalEntry>();
 
@@ -279,7 +279,7 @@ namespace Journly.Controllers
             return validEntries;
         }
 
-        private List<JournalEntry> FilterByDateRange(List<JournalEntry> entries, DateTime startDate, DateTime endDate)
+        public List<JournalEntry> FilterByDateRange(List<JournalEntry> entries, DateTime startDate, DateTime endDate)
         {
             var validEntries = new List<JournalEntry>();
 
@@ -294,7 +294,7 @@ namespace Journly.Controllers
             return validEntries;
         }
 
-        private List<JournalEntry> FilterByString(List<JournalEntry> entries, String searchString)
+        public List<JournalEntry> FilterByString(List<JournalEntry> entries, String searchString)
         {
             var validEntries = new List<JournalEntry>();
 

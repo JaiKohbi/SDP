@@ -1,0 +1,71 @@
+﻿@using Journly.Models
+@using Microsoft.Ajax.Utilities
+@model IEnumerable<JournalEntry>
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.First().Title</h2>
+
+
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <td>Date and Time</td>
+        <td>@Model.First().CreatedOn</td>
+    </tr>
+    <tr>
+        <td>Version</td>
+        <td>@Model.First().Version</td>
+    </tr>
+    <tr>
+        <td>Flag</td>
+        <td>@Model.First().Flag</td>
+    </tr>
+    <tr>
+        <td>Entry Body</td>
+        <td>@Model.First().EntryBody</td>
+    </tr>
+</table>
+
+<p class="btn btn-warning">@Html.ActionLink("Update Entry", "UpdateEntry", "JournalEntry", new { id = Model.First().Id }, null)</p>
+
+@if (Model.First().Flag == JournalEntry.EntryFlag.H)
+{
+    <p class="btn btn-warning">@Html.ActionLink("Un-Hide Entry", "FlagNormal", "JournalEntry", new { id = Model.First().Id}, null)</p>
+    <p class ="btn btn-danger">@Html.ActionLink("Delete Entry", "FlagDeleted", "JournalEntry", new {id = Model.First().Id}, null)</p>
+}else if (Model.First().Flag == JournalEntry.EntryFlag.N)
+{
+    <p class="btn btn-warning">@Html.ActionLink("Hide Entry", "FlagHidden", "JournalEntry", new {id = Model.First().Id}, null)</p>
+    <p class="btn btn-danger">@Html.ActionLink("Delete Entry", "FlagDeleted", "JournalEntry", new {id = Model.First().Id}, null)</p>
+}
+
+<h2>Previous Versions</h2>
+
+@for (int i = Model.Count()-1; i > 0; i--)
+{
+   
+    <table class="table table-bordered table-hover">
+        <tr>
+            <td>Title</td>
+            <td>@Model.ElementAt(i).Title</td>
+        </tr>
+        <tr>
+            <td>Date and Time</td>
+            <td>@Model.ElementAt(i).CreatedOn</td>
+        </tr>
+        <tr>
+            <td>Version</td>
+            <td>@Model.ElementAt(i).Version</td>
+        </tr>
+        <tr>
+            <td>Flag</td>
+            <td>@Model.ElementAt(i).Flag</td>
+        </tr>
+        <tr>
+            <td>Entry Body</td>
+            <td>@Model.ElementAt(i).EntryBody</td>
+        </tr>
+    </table>
+}

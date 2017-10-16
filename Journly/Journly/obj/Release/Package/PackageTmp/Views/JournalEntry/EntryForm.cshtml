@@ -1,0 +1,59 @@
+﻿@model Journly.Models.ViewModels.EntryFormModel
+@{
+    ViewBag.Title = "New Entry";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.entry.Id == 0)
+{
+    <h2>New Journal Entry</h2>
+
+    using (Html.BeginForm("Create", "JournalEntry"))
+    {
+     <div class="form-group">
+         @Html.LabelFor(m => m.entry.Title)
+         @Html.TextBoxFor(m => m.entry.Title, new {@class = "form-control"})
+         @Html.ValidationMessageFor(m => m.entry.Title)
+     </div>
+     <div class="form-group">
+         @Html.LabelFor(m => m.entry.EntryBody)
+         @Html.TextAreaFor(m => m.entry.EntryBody, new {@class = "form-control"})
+         @Html.ValidationMessageFor(m => m.entry.EntryBody)
+     </div>
+     @Html.HiddenFor(m => m.journal.Id)
+        @Html.AntiForgeryToken()
+     <button type="submit" class="btn btn-primary">Save</button>
+    }
+}
+else
+{
+    <h2>Edit Journal Entry</h2>
+
+    using (Html.BeginForm("Update", "JournalEntry"))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.entry.Title)
+            @Html.TextBoxFor(m => m.entry.Title, new {@class = "form-control"})
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.entry.EntryBody)
+            @Html.TextAreaFor(m => m.entry.EntryBody, new {@class = "form-control"})
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.entry.EntryEditedReason)
+            @Html.TextAreaFor(m => m.entry.EntryEditedReason, new { @class = "form-control" })
+        </div>
+        @Html.HiddenFor(m => m.journal.Id)
+        @Html.HiddenFor(m => m.entry.Id)
+        @Html.HiddenFor(m => m.entry.Flag)
+        @Html.HiddenFor(m => m.entry.Version)
+        @Html.AntiForgeryToken()
+        <button type="submit" class="btn btn-primary">Save</button>
+    }
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Journly", "Journly\Journly.csproj", "{9E135695-A6F3-453F-B2DF-74214466CB89}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestJournly", "UnitTestProject1\UnitTestJournly.csproj", "{FE12E79B-88A1-4825-84E3-DCAA031B1F23}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9E135695-A6F3-453F-B2DF-74214466CB89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E135695-A6F3-453F-B2DF-74214466CB89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E135695-A6F3-453F-B2DF-74214466CB89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE12E79B-88A1-4825-84E3-DCAA031B1F23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE12E79B-88A1-4825-84E3-DCAA031B1F23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE12E79B-88A1-4825-84E3-DCAA031B1F23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE12E79B-88A1-4825-84E3-DCAA031B1F23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
