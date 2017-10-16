@@ -38,6 +38,8 @@ namespace Journly.Controllers
                 }
             }
 
+            userJournals.Reverse();
+
             return View(userJournals);
         }
 
@@ -93,6 +95,8 @@ namespace Journly.Controllers
                     data.Entries.Add(jrnEntry);
                 }
             }
+
+            data.Entries.Reverse();
 
             return View(data);
         }

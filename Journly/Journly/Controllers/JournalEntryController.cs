@@ -219,8 +219,6 @@ namespace Journly.Controllers
                               where j.UserName == User.Identity.Name
                               select j).ToList();
 
-            var entries = new List<JournalEntry>();
-
             foreach (var jrn in myJournals)
             {
                 var myEntries = (from e in _context.JournalEntries
@@ -233,6 +231,14 @@ namespace Journly.Controllers
                 }
             }
 
+            if (search.ShowDeleted == false)
+            {
+                search.Results = FilterOutDeleted(search.Results);
+            }
+            if (search.ShowHidden == false)
+            {
+                search.Results = FilterOutHidden(search.Results);
+            }
             if (search.SearchString != null)
             {
                 search.Results = FilterByString(search.Results, search.SearchString);
@@ -301,6 +307,34 @@ namespace Journly.Controllers
             foreach (var jrn in entries)
             {
                 if (jrn.EntryBody.Contains(searchString) || jrn.Title.Contains(searchString))
+                {
+                    validEntries.Add(jrn);
+                }
+            }
+            return validEntries;
+        }
+
+        public List<JournalEntry> FilterOutHidden(List<JournalEntry> entries)
+        {
+            var validEntries = new List<JournalEntry>();
+
+            foreach (var jrn in entries)
+            {
+                if (jrn.Flag != JournalEntry.EntryFlag.H)
+                {
+                    validEntries.Add(jrn);
+                }
+            }
+            return validEntries;
+        }
+
+        public List<JournalEntry> FilterOutDeleted(List<JournalEntry> entries)
+        {
+            var validEntries = new List<JournalEntry>();
+
+            foreach (var jrn in entries)
+            {
+                if (jrn.Flag != JournalEntry.EntryFlag.D)
                 {
                     validEntries.Add(jrn);
                 }

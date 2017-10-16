@@ -100,3 +100,4 @@ C:\Users\Jai\Documents\Uni\Year_Three_Sem_Two\SDP\SDP_Project\Journly\Journly\ob
 C:\Users\Jai\Documents\Uni\Year_Three_Sem_Two\SDP\SDP_Project\Journly\Journly\obj\Release\Journly.csproj.GenerateResource.Cache
 C:\Users\Jai\Documents\Uni\Year_Three_Sem_Two\SDP\SDP_Project\Journly\Journly\obj\Release\Journly.dll
 C:\Users\Jai\Documents\Uni\Year_Three_Sem_Two\SDP\SDP_Project\Journly\Journly\obj\Release\Journly.pdb
+C:\Users\Jai\Documents\Uni\Year_Three_Sem_Two\SDP\SDP_Project\Journly\Journly\obj\Release\Journly.csprojResolveAssemblyReference.cache

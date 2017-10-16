@@ -22,15 +22,21 @@ else
         @Html.LabelFor(m => m.SearchString)
         @Html.TextBoxFor(m => m.SearchString, new {@class = "form-control"})
     </div>
-    <div>
+    <div class ="form-group">
         @Html.LabelFor(m => Model.StartDate)
         @Html.TextBoxFor(m => m.StartDate, "{0:d MMM yyyy}",  new {@class = "form-control"})
     </div>
-    <div>
+    <div class="form-group">
         @Html.LabelFor(m => Model.EndDate)
         @Html.TextBoxFor(m => m.EndDate, "{0:d MMM yyyy}",  new { @class = "form-control" })
     </div>
-    <div>
+    <div class="checkbox">
+        @Html.CheckBoxFor(m => m.ShowHidden) Show Hidden
+    </div>
+    <div class="checkbox">
+        @Html.CheckBoxFor(m => m.ShowDeleted) Show Deleted
+    </div>
+    <div class="form-group">
         <button type="submit" class="btn btn-primary">Search</button>
     </div>
 }

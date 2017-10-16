@@ -10,6 +10,8 @@ namespace Journly.Models.ViewModels
         public SearchFormModel()
         {
             Results = new List<JournalEntry>();
+            ShowHidden = true;
+            ShowDeleted = true;
         }
 
         public String JournalTitle { get; set; }
@@ -17,6 +19,8 @@ namespace Journly.Models.ViewModels
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int JournalId { get; set; }
+        public bool ShowHidden { get; set; }
+        public bool ShowDeleted { get; set; }
         public List<JournalEntry> Results { get; set; }
 
     }
