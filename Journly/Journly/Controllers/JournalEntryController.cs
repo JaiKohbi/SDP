@@ -124,6 +124,7 @@ namespace Journly.Controllers
                         if (e.Id == entry.EntryEditedId && e.Version == i)
                         {
                             entries.Add(e);
+                            entry = e;
                         }
                     }
                 }

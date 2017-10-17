@@ -27,6 +27,13 @@
         <td>Entry Body</td>
         <td>@Model.First().EntryBody</td>
     </tr>
+    @if (Model.First().EntryEditedReason != null)
+    {
+        <tr>
+            <td>Edited Reason</td>
+            <td>@Model.First().EntryEditedReason</td>
+        </tr>
+    }
 </table>
 
 <p class="btn btn-warning">@Html.ActionLink("Update Entry", "UpdateEntry", "JournalEntry", new { id = Model.First().Id }, null)</p>
@@ -43,7 +50,7 @@
 
 <h2>Previous Versions</h2>
 
-@for (int i = Model.Count()-1; i > 0; i--)
+@for(int i = 1; i < Model.Count(); i++)
 {
    
     <table class="table table-bordered table-hover">
@@ -67,5 +74,13 @@
             <td>Entry Body</td>
             <td>@Model.ElementAt(i).EntryBody</td>
         </tr>
+        
+        @if (Model.ElementAt(i).EntryEditedReason != null)
+        {
+            <tr>
+                <td>Edited Reason</td>
+                <td>@Model.ElementAt(i).EntryEditedReason</td>
+            </tr>
+        }
     </table>
 }

@@ -7,7 +7,9 @@
 
 <h2>Select Journal to Search</h2>
 
-@Html.ActionLink("Search All Journals", "SearchResults", "JournalEntry")
+<div class="form-group">
+    <p class="btn btn-success">@Html.ActionLink("Search All Journals", "SearchResults", "JournalEntry")</p>
+</div>
 
 @if (!Model.Any())
 {
